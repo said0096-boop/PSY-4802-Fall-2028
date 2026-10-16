@@ -1,0 +1,73 @@
+---
+title: "Quiz 1"
+author: "Mohamud Said"
+date: "2026-10-16"
+output: html_document
+---
+
+
+This quiz will cover everything we've covered in foundations of R assignments.
+
+1. Open the tidyverse library.
+```{r}
+library(tidyverse)
+```
+
+2. Open the starwars dataset.
+```{r}
+data(starwars)
+```
+
+3. Create a subset of data that contains only the humans from the starwars franchise.
+```{r}
+humanStarWars <-subset(starwars, starwars$species == "Human")
+humanStarWars
+```
+
+4. In this subset of data, who is the tallest character? 
+
+**Darth Vader, since he is 202 cm. I dont know if you want me to find it with code though? I'm checking my notes and I can't find anything that would be useful!**
+```{r}
+print(humanStarWars |> select(name, height))
+# Darth Vader since he has 202. 
+
+#if you wanted something more interesting, hopefully this satisfies you?
+subset(humanStarWars, humanStarWars$height >= 200)
+```
+
+5. In this subset of data, print the information about the character in the third row.
+```{r}
+print(humanStarWars[3,])
+```
+
+6. In the full starwars dataset, calculate the average mass for the masculine characters. 
+```{r}
+mean(starwars$mass[starwars$gender =="masculine"], na.rm=TRUE)
+#106.5149
+```
+
+7. Create a dataset that contains only the characters and the films that they appeared in from the full dataset. 
+```{r}
+CharacterFilm <- starwars |> select(name, films)
+```
+
+8. Create a new column in the starwars dataset that contains a "ranking" of all characters (Note: you don't have to ac
+tually rank them. Just fill the column in with the numbers 1-87)
+```{r}
+starwars$rank <- 1:87
+starwars |> select(name, rank)
+```
+
+9. Create a subset of data for the characters from Naboo. How many characters are from Naboo? 
+```{r}
+nabooSubset <- subset(starwars, starwars$homeworld == "Naboo")
+nrow(nabooSubset)
+# 11
+```
+
+10. How many droids are in the full dataset? 
+```{r}
+nrow(subset(starwars, starwars$species == "Droid"))
+# 6
+```
+
