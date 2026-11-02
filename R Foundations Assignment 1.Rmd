@@ -60,7 +60,7 @@ mean(penguins$bill_len, na.rm=TRUE)
 greaterbill
 ```
 
-9. How many penguins are in this subset? 
+9. How many penguins are in this subset?
     **175**
 # More dataset use
 10. Load the tidyverse library if you haven't already done so.
