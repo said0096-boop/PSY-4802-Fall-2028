@@ -63,6 +63,7 @@ greaterbill
 9. How many penguins are in this subset?
     **175**
 # More dataset use
+
 10. Load the tidyverse library if you haven't already done so.
 **loaded**
 12. Create a new dataframe that has diamonds greater than 1 carat and an ideal cut. 
