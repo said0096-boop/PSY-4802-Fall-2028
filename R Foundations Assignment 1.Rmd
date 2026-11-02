@@ -66,10 +66,29 @@ greaterbill
 10. Load the tidyverse library if you haven't already done so.
 **loaded**
 12. Create a new dataframe that has diamonds greater than 1 carat and an ideal cut. 
-**don't know the dataframe**
+```{r}
+diamondsIdealandOneCarat<- subset(diamonds, diamonds$carat >1 & cut == "Ideal" )
+```
+
 13. Find the mean and standard deviation of price for this new dataset. 
-**don't know the dataframe**
+
+```{r}
+mean(diamondsIdealandOneCarat$price)
+sd(diamondsIdealandOneCarat$price)
+
+# mean = 8674.227, sd = 3817.028
+```
+
 14. Create another new dataframe from the original diamonds dataset that includes all diamonds with a price between $2500 and $5000. 
-**don't know the dataframe**
+
+```{r}
+diamondspricerange <- subset(diamonds, diamonds$price >= 2500 & price <=5000)
+```
+
 15. Which color occurs most in this new subset?
 **don't know the dataframe**
+```{r}
+summary(diamondspricerange)
+
+#most common color is F.
+```
