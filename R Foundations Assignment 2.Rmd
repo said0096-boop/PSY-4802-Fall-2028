@@ -22,6 +22,7 @@ data("billboard")
 ```{r}
 #Billboards top 100 for each week, if you are off the 100, you have an NA value.
 ```
+AW comment: doesn't need to be in a code chunk, but ok to do so
 
 4. Print the column names from this dataset. 
 ```{r}
@@ -32,6 +33,7 @@ colnames(billboard)
 ```{r}
 billboard[1:5, ]
 ```
+could also use head(billboard, n=5)
 
 # Practice
 1. Create a subset of data that has Jay-Z as the only artist. How many songs are in it?
@@ -40,6 +42,7 @@ subset(billboard, billboard$artist == "Jay-Z")
 # FIVE SONGS
 ```
        **FIVE SONGS**
+aw comment: how did you get 5? 
 
 2. In the original dataset, use filter to find information about the song "All the small things." What was the highest position (i.e. lowest number) this song reached on the billboard 100? 
 ```{r}
@@ -59,6 +62,10 @@ summary(timData$wk1)
 
 ifelse(billboard$artist == "Spears, Britney", "Britney", "No Britney")
 ```
+aw comment: this works, but is not a function
+isIt<- function(artist){
+ifelse(artist=="Spears,Britney, "Britney", "No Britney")
+}
 
 5. Test your function on the billboard data. Save the results to a new column called "wasItBritney"
 ```{r}
