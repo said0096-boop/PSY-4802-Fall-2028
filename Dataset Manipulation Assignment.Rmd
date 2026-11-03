@@ -1,0 +1,79 @@
+---
+title: "Dataset Manipulation Assignment"
+author: "Amanda Mae Woodward"
+date: "2026-10-07"
+output: html_document
+---
+
+#Part 1
+1.Open the sleep dataset in R
+```{r}
+data(sleep)
+```
+
+2. Is it long or wide format? How do you know?
+
+*Its in long format, since group 1 and 2 are repeated across multiple rows instead of columns.*
+
+3. Transform this data so that it is in the other format.
+```{r}
+Sleepwide <-pivot_wider(sleep, id_cols = c("ID"), names_from = "group", values_from = "extra", names_prefix= "Drug")
+```
+
+4. Transform your data back to its original format.
+```{r}
+Sleeplong <- pivot_longer(Sleepwide, cols =(3:14), names_to="Time", values_to = "Weight" )
+```
+
+5. Open the Starwars dataset
+```{r}
+data(starwars)
+```
+
+6. Create homeworld as a factor. How many levels does it have?
+```{r}
+starwars$homeworld2<- as.factor(starwars$homeworld)
+levels(starwars$homeworld2)
+
+```
+*has 43 levels*
+
+7. Reorder homeworld so that Naboo is the reference group.
+```{r}
+relevel(starwars$homeworld2, ref="Naboo")
+```
+
+8. Use mutate to create a column transforming kg to pounds. (hint: you may need to look up the conversion)
+```{r}
+starwars <-mutate(starwars, weightpound = mass * 2.20462)
+```
+
+9. Print a summary of your column from #8
+```{r}
+summary(starwars$weightpound)
+```
+
+#Part 2
+10. open the billboard dataset.
+```{r}
+data(billboard)
+```
+
+11. are the data in this dataframe in long or wide format? explain how you know.
+*Its in wide format, since the values are spread across numerous columns*
+
+12. change the data from its original format to the other version.
+```{r}
+billboardlong <- pivot_longer(billboard, cols= c(colnames(billboard)[4:79]), names_to= "weeks", values_to="positionrankings", values_drop_na = TRUE)
+```
+
+13. change it from your altered version in #3 back to its original state.
+```{r}
+billboardwide <- pivot_wider(billboardlong, id_cols = c("artist", "track", "date.entered"), names_from = "weeks", values_from = "positionrankings")
+```
+
+14. Separate the date entered column into three columns: one for year, one for month, and one for day.
+```{r}
+billboard <- separate(billboard, date.entered, into= c("year", "month", "day"), sep= "-")
+```
+
