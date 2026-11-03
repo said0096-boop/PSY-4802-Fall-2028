@@ -34,6 +34,7 @@ print(humanStarWars |> select(name, height))
 #if you wanted something more interesting, hopefully this satisfies you?
 subset(humanStarWars, humanStarWars$height >= 200)
 ```
+however you found it is fine! if you wanted code, you could use the max() function, which we haven't talked about explicitly
 
 5. In this subset of data, print the information about the character in the third row.
 ```{r}
