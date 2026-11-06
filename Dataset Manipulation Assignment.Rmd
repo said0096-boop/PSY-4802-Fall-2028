@@ -37,6 +37,7 @@ levels(starwars$homeworld2)
 
 ```
 *has 43 levels*
+AW: I have 48?
 
 7. Reorder homeworld so that Naboo is the reference group.
 ```{r}
