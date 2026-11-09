@@ -1,0 +1,61 @@
+---
+title: "Quiz 2"
+author: "Amanda Mae Woodward"
+date: "2026-11-03"
+output: html_document
+---
+
+
+This quiz will focus on data frame manipulation, however, you may need to rely on skills you've learned in prior weeks. 
+
+1. load the starwars dataset from tidyverse
+```{r}
+data(starwars)
+``` 
+
+
+2. separate the films column so that there is one film in each column (don't worry about the "c(" and ) at the end for now)
+```{r}
+starwars_Seperated <- separate(starwars, films, into = c("film_1", "film_2", "film_3", "film_4", "film_5", "film_6", "film_7"), sep=",")
+#WHY THE HELL DO I SPELL SEPARATE LIKE SEPERATE????????????
+```
+`
+
+3. alter the data from wide data to long data
+```{r}
+starwars_Long <- pivot_longer(starwars_Seperated, cols =(12:17), names_to="film_Number", values_to = "Film")
+```
+
+
+4. in the column where you stored the films, rename the levels so each film name is consistent (e.g. get rid of the "c(" and ")" )
+```{r}
+levels(starwars_Long$Film)
+starwars_Long$Film <- as.factor(starwars_Long$Film)
+levels(starwars_Long$Film)<- c( "Attack of the Clones", "Attack of the Clones", "Return of the Jedi","Return of the Jedi" , "Revenge of the Sith", "Revenge of the Sith", "The Empire Strikes Back", "The Force Awakens", "The Phantom Menace", "The Phantom Menace", "A New Hope", "Attack of the Clones", "A New Hope", "Attack of the Clones", "Return of the Jedi", "The Empire Strikes Back", "The Phantom Menace", "Return of the Jedi", "Revenge of the Sith", "The Empire Strikes Back", "The Force Awakens", "The Phantom Menace")
+
+```
+
+
+5. Create a column in your dataset that indicates whether a character was in the first starwars film, *Star Wars Episode IV: A New Hope* 
+```{r}
+starwars_Long$A_New_Hope_maybeidk <- "no hope"
+for(i in 1:nrow(starwars_Long)) {
+  if(starwars_Long$Film[i]) {
+    starwars_Long$A_New_Hope_maybeidk[i] <- "Yes HOPE!"
+  }
+}
+#IDK HOW TO MAKE THIS WORK!!!!! AAAAAAAAAAAAAAAAAAAAAAAAAAA 
+    
+```
+
+6. BMI is calculated as mass in Kg/height in meters squared. You currently have mass in Kg and height in cm. Create a column that contains each character's BMI. 
+```{r}
+starwars$BMI <-mutate(starwars, BMI = mass / (height / 100)^2)
+```
+
+7. create a dataframe that contains only the name, hair color, and eye color for each character. 
+```{r}
+Character_detais <- starwars |> select(name, hair_color, eye_color)
+
+```
+
