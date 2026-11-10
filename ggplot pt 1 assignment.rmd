@@ -1,0 +1,58 @@
+---
+title: "ggplot pt 1 assignment"
+author: "Amanda Mae Woodward"
+date: "2026-10-29"
+output: html_document
+---
+1. open the starwars dataset in tidyverse
+```{r}
+data(starwars)
+```
+
+2. create a graph showing the frequency of eye colors in the dataset. 
+```{r}
+ggplot(starwars, aes(eye_color)) + geom_bar() 
+```
+
+
+3. Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc. 
+```{r}
+ggplot(starwars, aes(eye_color)) + geom_bar(fill = "#b148d2") + theme_classic() + ggtitle("Common Eye Color Of Characters in Star Wars") + xlab("Eye Color") + ylab("Amount of Characters")
+```
+
+4. Create a graph displaying information about character's height in each homeworld. 
+```{r}
+library(jtools)
+ggplot(starwars, aes(y=homeworld, x=height)) + geom_point() + theme_apa()
+```
+
+5. Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc.
+```{r}
+ggplot(starwars, aes(y=homeworld, x=height)) + geom_point() + theme_apa() + ggtitle("Height of Characters per Homeworld") + xlab("Height of Characters") + ylab("Homeworld")
+
+```
+
+
+6. Create a graph of character's height by mass. 
+```{r}
+ggplot(starwars, aes(mass, height)) + geom_point(na.rm=TRUE) + theme_apa()
+```
+
+
+7.Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc.
+```{r}
+ggplot(starwars, aes(mass, height)) + geom_point(na.rm=TRUE) + theme_apa()+ ggtitle("Mass vs Height of Star Wars Characters") + xlab("Mass of Characters") + ylab("Height Of Characters")
+
+```
+
+8. Add gender as a third variable to your graph of height by mass. 
+```{r}
+ggplot(starwars, aes(mass, height, color = gender)) + geom_point(na.rm=TRUE) + theme_apa()
+```
+
+9. Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc.
+```{r}
+
+ggplot(starwars, aes(mass, height, color = gender)) + geom_point(na.rm=TRUE) + theme_apa()+ ggtitle("Mass vs Height of Star Wars Characters") + xlab("Mass of Characters") + ylab("Height Of Characters") 
+```
+
