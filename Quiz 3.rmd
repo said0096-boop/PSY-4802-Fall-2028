@@ -1,6 +1,6 @@
 ---
 title: "Quiz 3"
-author: "Amanda Mae Woodward"
+author: "Mohamud Said"
 date: "2025-10-30"
 output: html_document
 ---
